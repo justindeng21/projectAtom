@@ -1,0 +1,73 @@
+canvas{
+    position:fixed;
+    top: 0;
+    left: 0;
+}
+
+
+#backgroundScene:hover ~ #navBar{
+    visibility: hidden;
+}
+
+#container canvas, #overlay {
+    position: absolute;
+    color: white;
+    font-family: 'courier new',monospace;
+    background: transparent;
+    
+    
+}
+
+
+
+
+#navBar{
+    display: flex; 
+    flex-direction: column;
+    list-style-type: none;
+    width: 120%;
+    margin: 10%;
+    padding: 0%;
+    background-color: transparent;
+
+    font-size: 2rem;
+    visibility: hidden;
+    transition: 0s 0.6s;
+    opacity: 70%;
+}#navBar:hover{
+    visibility: visible;
+    transition:0s;
+}
+
+
+#navButton{
+    background-color: transparent;
+    color: white;
+    padding: 10% 10%;
+    border: 0px;
+    font-size: 2rem;
+    opacity: 70%;
+}#navButton:hover ~ #navBar{
+    visibility: visible;
+    transition:0s;
+}
+
+
+
+
+a{
+    color: white;
+    text-decoration: none;
+}a:hover{
+    background-image: none;
+    color:aqua
+}
+
+li{
+    display:inline-block;
+    margin: 2rem 0;
+    padding: 0%;
+}
+
+
+
