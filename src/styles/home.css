@@ -12,7 +12,8 @@ canvas{
 #container canvas, #overlay {
     position: absolute;
     color: white;
-    font-family: 'courier new',monospace;
+
+    font-family: 'Roboto';font-size: 22px;
     background: transparent;
     
     

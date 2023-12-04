@@ -189,10 +189,9 @@ function App() {
                 
             <button id='navButton'>☰</button>
             <ul id='navBar'>
-                <li><a href="default.asp">Home</a></li>
-                <li><a href="news.asp">News</a></li>
-                <li><a href="contact.asp">Contact</a></li>
-                <li><a href="about.asp">About</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="https://github.com/justindeng21/projectAtom">GitHub</a></li>
+
             </ul>
             </div>
         
