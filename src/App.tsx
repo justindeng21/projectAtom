@@ -8,10 +8,6 @@ import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
 class StarCluster{
 
-
-
-
-
     constructor(nStars : number,rotateRate : number){
         this.cluster = new Three.Object3D()
         this.stars = []
@@ -40,9 +36,9 @@ class StarCluster{
     }
 
     createStar(){
-        const sphereGeometry = new Three.SphereGeometry( 0.15, 24, 24 ); 
-        const sphereMaterial = new Three.MeshLambertMaterial( { color: 0xADD8E6} ); 
-        const star = new Three.Mesh( sphereGeometry, sphereMaterial );
+        const starGeometry = new Three.SphereGeometry( 0.15, 24, 24 ); 
+        const starMaterial = new Three.MeshLambertMaterial( { color: 0xADD8E6} ); 
+        const star = new Three.Mesh( starGeometry, starMaterial );
         const [x,y,z] = new Array(3).fill(3).map(() => Three.MathUtils.randFloatSpread(50));
 
         const xPolar = Math.sqrt(x * x + y * y + z * z) * this.getRandomArbitrary(-1,1)
@@ -77,8 +73,6 @@ class StarCluster{
         this.cluster.rotateZ(this.zRate)
         this.pointLightHelper.rotation.y -= 0.1
 
-
-
     }
 
 
@@ -108,12 +102,13 @@ class Animation{
 
         this.renderer = new Three.WebGLRenderer({
             canvas: document.querySelector("#backgroundScene")!
-        })
-        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-
+        })  
         this.renderer.render(this.scene,this.camera)
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.shadowMap.enabled = true;
+
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+
 
 
         const geometry = new Three.SphereGeometry( 7, 13, 13 ); 
@@ -123,28 +118,34 @@ class Animation{
 
         this.sphere = new Three.Mesh( geometry, material );
         this.scene.add(this.sphere)
- 
+    
 
-
-        
 
         this.clusters = []
+        this.createStarClusters()
+    }
+
+
+
+    createStarClusters(){
 
         for(var i = 0; i < 20; i++){
             var cluster = new StarCluster(10,0.001);
             this.clusters.push(cluster)
             this.scene.add(cluster.getCluster())
         }
-
-        
     }
 
-    calcNextFrame(){
+    rotateClusters(){
         for(var i = 0; i < this.clusters.length; i++){
             this.clusters[i].rotate()
             this.clusters[i].rotate()
             this.clusters[i].rotate()
         }
+    }
+
+    calcNextFrame(){
+
         this.scene.rotateY(0.00005)
         this.scene.rotateX(0.00005)
         this.scene.rotateZ(0.00005)
@@ -186,13 +187,11 @@ function App() {
             <canvas id='backgroundScene'></canvas>
             <div ref={refContainer}></div>
             <div id='overlay'>
-                
-            <button id='navButton'>☰</button>
-            <ul id='navBar'>
-                <li><a href="#">Home</a></li>
-                <li><a href="https://github.com/justindeng21/projectAtom">GitHub</a></li>
 
-            </ul>
+                
+                <ins className='dcmads' style={{display:'inline-block',width:'728px',height:'90px'}}  data-dcm-placement='N6438.4787337JUSTINSDEBUGSITE/B30227872.371767756' data-dcm-rendering-mode='iframe' data-dcm-https-only data-dcm-api-frameworks='[APIFRAMEWORKS]' data-dcm-omid-partner='[OMIDPARTNER]' data-dcm-gdpr-applies='gdpr=${GDPR}' data-dcm-gdpr-consent='gdpr_consent=${GDPR_CONSENT_755}' data-dcm-addtl-consent='addtl_consent=${ADDTL_CONSENT}' data-dcm-ltd='false' data-dcm-resettable-device-id='' data-dcm-app-id=''> <script src='https://www.googletagservices.com/dcm/dcmads.js'></script> </ins>
+                
+
             </div>
         
         </div>
