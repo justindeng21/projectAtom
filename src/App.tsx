@@ -146,6 +146,8 @@ class Animation{
 
     calcNextFrame(){
 
+        this.rotateClusters()
+
         this.scene.rotateY(0.00005)
         this.scene.rotateX(0.00005)
         this.scene.rotateZ(0.00005)
